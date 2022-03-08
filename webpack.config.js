@@ -1,15 +1,9 @@
-module.exports = {
-  mode: 'development',
-  devServer: {
-    static: './dist',
-  },
-  rules: [
-    {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader',
-      },
-    },
-  ],
+const { merge } = require('webpack-merge');
+const commonConfig = require('./webpack.common');
+
+module.exports = (envVars) => {
+  const { env } = envVars;
+  const envConfig = require(`./webpack.${env}.js`);
+  const config = merge(commonConfig, envConfig);
+  return config;
 };
