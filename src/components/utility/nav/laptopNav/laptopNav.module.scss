@@ -1,0 +1,8 @@
+@import './../../../../scssUtilities/index.module.scss';
+
+.laptopNav {
+  display: none;
+  @include laptopSm {
+    display: block;
+  }
+}

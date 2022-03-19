@@ -1,0 +1,7 @@
+@import './../../../../scssUtilities/index.module.scss';
+
+.mobileNav {
+  @include laptopSm {
+    display: none;
+  }
+}
