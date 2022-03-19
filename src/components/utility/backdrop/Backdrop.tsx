@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Backdrop: React.FC<Props> = ({ onClick, isShown }) => {
-  return <div onClick={onClick} className={classnames(classes.backdrop, isShown && classes.shown)}></div>;
+  return <div onClick={onClick} className={classnames(classes.backdrop, isShown && classes.shown)} data-test='backdrop'></div>;
 };
 
 export default Backdrop;

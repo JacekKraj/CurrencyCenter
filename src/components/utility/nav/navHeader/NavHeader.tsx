@@ -34,7 +34,7 @@ const NavHeader: React.FC<Props> = ({ children, showSideBar }) => {
   return (
     <div className={classes.mobileNav}>
       <div className={classes.navLeftSide}>
-        <MenuIcon className={iconsStyle.nav} onClick={showSideBar} />
+        <MenuIcon className={iconsStyle.nav} onClick={showSideBar} data-test='show-mobile-nav-icon' />
         <NavLink to='/'>
           <img src={Logo} alt='Currency Center logo without name' className={classes.noTextLogo} />
           <img src={TextLogo} alt='Currency Center logo with name' className={classes.textLogo} />
