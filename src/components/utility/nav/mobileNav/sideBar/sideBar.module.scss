@@ -1,0 +1,27 @@
+@import './../../../../../scssUtilities/index.module.scss';
+
+.sideBar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  height: 100vh;
+  width: 250px;
+  overflow: auto;
+  background-color: rgb(252, 252, 252);
+  z-index: 11;
+  padding: 1.2em 0;
+  transition: 0.2s;
+}
+
+.shown {
+  left: 0px;
+}
+
+.logoContainer {
+  border-bottom: 1px solid $green-main;
+}
+
+.logo {
+  width: 2.5em;
+  margin: 0em 1.2em 1em;
+}

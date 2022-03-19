@@ -1,0 +1,61 @@
+@import './../../../../scssUtilities/index.module.scss';
+
+.mobileNav {
+  display: flex;
+  padding: 1.2em 0.9em;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.navLeftSide {
+  display: flex;
+  align-items: center;
+}
+
+.noTextLogo {
+  width: 2em;
+
+  @include mobileVertical {
+    display: none;
+  }
+
+  @include mobileHorizontal {
+    display: none;
+  }
+}
+
+.textLogo {
+  display: none;
+
+  @include mobileVertical {
+    display: block;
+    height: 2em;
+  }
+
+  @include mobileHorizontal {
+    display: block;
+    height: 2em;
+  }
+}
+
+.buttonAdditional {
+  font-size: 14px;
+}
+
+.signInButton {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-weight: bold;
+  margin: 0 0.75em;
+  font-size: 14px;
+  color: #444;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.signInButton:hover {
+  color: $green-main;
+}

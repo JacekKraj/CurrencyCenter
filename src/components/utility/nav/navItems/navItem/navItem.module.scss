@@ -1,0 +1,30 @@
+@import './../../../../../scssUtilities/index.module.scss';
+
+.navItem {
+  display: flex;
+  align-items: center;
+  color: $font-main;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.8em 0 0.8em 1.2em;
+  font-size: 18px;
+  width: 80%;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  transition: 0.2s;
+
+  @include laptopSm {
+    width: auto;
+    padding: 0 1em;
+    font-weight: normal;
+  }
+}
+
+.navItem:hover {
+  background-color: $green-main-ligher;
+  width: 95%;
+  @include laptopSm {
+    background-color: unset;
+    width: auto;
+  }
+}

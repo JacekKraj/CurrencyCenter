@@ -1,0 +1,12 @@
+@import './../../../../scssUtilities/index.module.scss';
+
+.navItems {
+  margin: 1em 0;
+  list-style: none;
+
+  @include laptopSm {
+    display: flex;
+    align-items: center;
+    margin: 0 1.5em;
+  }
+}

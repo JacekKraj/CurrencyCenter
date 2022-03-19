@@ -1,0 +1,17 @@
+@import './../../../scssUtilities/index.module.scss';
+
+.button {
+  border: none;
+  outline: none;
+  background-color: $green-main;
+  color: white;
+  padding: 0.75em;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.15s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: $green-main-darker;
+}
