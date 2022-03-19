@@ -11,7 +11,7 @@ interface Props {
 
 const SideBar: React.FC<Props> = ({ isShown }) => {
   return (
-    <div className={classnames(classes.sideBar, isShown && classes.shown)}>
+    <div className={classnames(classes.sideBar, isShown && classes.shown)} data-test='mobile-nav'>
       <div className={classes.logoContainer}>
         <img src={Logo} alt='logo without name' className={classes.logo} />
       </div>
