@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './index.css';
 
 import RoutesContainer from './routes/RoutesContainer';
-import Nav from './components/utility/nav/Nav';
 
 const App: React.FC = () => {
   return (
-    <React.Fragment>
-      <Nav />
+    <Suspense fallback={<div></div>}>
       <RoutesContainer />
-    </React.Fragment>
+    </Suspense>
   );
 };
 

@@ -1,0 +1,13 @@
+@import './../../scssUtilities/index.module.scss';
+
+.buttonAdditional {
+  width: 100%;
+  margin-top: 0.5em;
+  text-transform: uppercase;
+}
+
+.authModalTitle {
+  margin-bottom: 1em;
+  color: $font-main;
+  font-weight: normal;
+}

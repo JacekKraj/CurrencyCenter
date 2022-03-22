@@ -6,7 +6,8 @@ import { NavLink } from 'react-router-dom';
 import classes from './navHeader.module.scss';
 import { breakpoints } from './../../../../utilities/breakpoints/breakpoints';
 import Logo from './../../../../assets/images/Logo.png';
-import TextLogo from './../../../../assets/images/TextLogo.png';
+import TextLogo from './../../textLogo/TextLogo';
+import NoTextLogo from '../../noTextLogo/NoTextLogo';
 import Button from './../../button/Button';
 
 const { laptopSm } = breakpoints;
@@ -35,15 +36,17 @@ const NavHeader: React.FC<Props> = ({ children, showSideBar }) => {
     <div className={classes.mobileNav}>
       <div className={classes.navLeftSide}>
         <MenuIcon className={iconsStyle.nav} onClick={showSideBar} data-test='show-mobile-nav-icon' />
-        <NavLink to='/'>
-          <img src={Logo} alt='Currency Center logo without name' className={classes.noTextLogo} />
-          <img src={TextLogo} alt='Currency Center logo with name' className={classes.textLogo} />
-        </NavLink>
+        <NoTextLogo className={classes.noTextLogo} />
+        <TextLogo className={classes.textLogo} />
         {children}
       </div>
       <div className={classes.navButtons}>
-        <button className={classes.signInButton}>Sign In</button>
-        <Button className={classes.buttonAdditional}>Open account</Button>
+        <NavLink to='/SignIn'>
+          <button className={classes.signInButton}>Sign In</button>
+        </NavLink>
+        <NavLink to='/SignUp'>
+          <Button className={classes.buttonAdditional}>Open account</Button>
+        </NavLink>
       </div>
     </div>
   );
