@@ -64,7 +64,6 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
       registerEnd();
     } catch (error) {
       const message = getCatchErrorMessage(error);
-
       registerFail(message);
     }
   };
@@ -83,7 +82,6 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
 
   const authenticate = async (email: string, password: string) => {
     authenticateStart();
-
     try {
       const auth = getAuth();
 

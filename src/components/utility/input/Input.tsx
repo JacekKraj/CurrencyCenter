@@ -15,7 +15,7 @@ interface Props {
 const Input: React.FC<Props> = (props) => {
   const { className } = props;
 
-  return <input {...props} required autoComplete='off' className={classnames(className, classes.input)} />;
+  return <input {...props} autoComplete='off' required className={classnames(className, classes.input)} />;
 };
 
 export default Input;

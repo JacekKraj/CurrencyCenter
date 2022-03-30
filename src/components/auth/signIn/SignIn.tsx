@@ -4,7 +4,6 @@ import { Formik, Form } from 'formik';
 import { AuthContext } from '../../../context/providers/AuthContextProvider';
 import AuthWrapper from '../authWrapper/AuthWrapper';
 import FormikTextInput from '../../utility/formik/FormikTextInput';
-import Input from '../../utility/input/Input';
 import Button from '../../utility/button/Button';
 import classes from './../forms.module.scss';
 import FormInfo from '../formInfo/FormInfo';
@@ -28,9 +27,9 @@ const SignIn: React.FC = () => {
       <Formik initialValues={initialValues} onSubmit={submitForm}>
         {() => {
           return (
-            <Form>
-              <FormikTextInput type='email' name='email' description='E-mail address' as={Input} />
-              <FormikTextInput type='password' name='password' description='Password' as={Input} />
+            <Form data-test='signin-form'>
+              <FormikTextInput type='email' name='email' description='E-mail address' />
+              <FormikTextInput type='password' name='password' description='Password' />
               {errorMessage && <Error message={errorMessage} />}
               <Button className={classes.buttonAdditional} type='submit'>
                 Sign in

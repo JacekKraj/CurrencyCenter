@@ -2,12 +2,12 @@ import React from 'react';
 import { Field, useField } from 'formik';
 
 import classes from './formikTextInput.module.scss';
+import Input from './../input/Input';
 
 interface Props {
   name: string;
   type: string;
   placeholder?: string;
-  as: React.FC<any>;
   description: string;
 }
 
@@ -17,7 +17,7 @@ const FormikTextInput: React.FC<Props> = (props) => {
   return (
     <div className={classes.formikTextInput}>
       <span className={classes.description}>{props.description}</span>
-      <Field {...field} {...props} />
+      <Field as={Input} {...field} {...props} />
     </div>
   );
 };

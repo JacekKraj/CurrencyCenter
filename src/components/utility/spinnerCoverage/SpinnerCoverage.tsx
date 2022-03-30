@@ -5,7 +5,7 @@ import Spinner from '../spinner/Spinner';
 
 const SpinnerCoverage: React.FC = () => {
   return (
-    <div className={classes.spinnerCoverage}>
+    <div className={classes.spinnerCoverage} data-test='spinner-coverage'>
       <Spinner />
     </div>
   );

@@ -4,7 +4,6 @@ import * as Yup from 'yup';
 
 import AuthWrapper from '../authWrapper/AuthWrapper';
 import FormikTextInput from '../../utility/formik/FormikTextInput';
-import Input from '../../utility/input/Input';
 import classes from './../forms.module.scss';
 import Button from './../../utility/button/Button';
 import FormInfo from '../formInfo/FormInfo';
@@ -44,10 +43,10 @@ const SignUp: React.FC = () => {
       <Formik initialValues={initialValues} onSubmit={submitForm} validationSchema={signUpValidationSchema}>
         {({ errors, touched }) => {
           return (
-            <Form>
-              <FormikTextInput type='email' name='email' description='E-mail address' as={Input} />
-              <FormikTextInput type='password' name='password' description='Password' as={Input} />
-              <FormikTextInput type='password' name='passwordRepeat' description='Password repeat' as={Input} />
+            <Form data-test='signup-form'>
+              <FormikTextInput type='email' name='email' description='E-mail address' />
+              <FormikTextInput type='password' name='password' description='Password' />
+              <FormikTextInput type='password' name='passwordRepeat' description='Password repeat' />
               {hasErrors(errors) && allFieldsWereTouched(touched) && (
                 <Error message={errors.email || errors.password || errors.passwordRepeat || errorMessage} />
               )}

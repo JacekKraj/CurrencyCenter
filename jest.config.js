@@ -6,4 +6,5 @@ module.exports = {
   },
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   collectCoverageFrom: ['**/src/**/*.(js|ts|jsx|tsx)'],
+  setupFiles: ['<rootDir>/.jest/setEnvVars.ts'],
 };
