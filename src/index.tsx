@@ -1,15 +1,15 @@
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import './fireConfig';
 
-import { store } from './redux/store';
+import GlobalContexts from './context/globalContexts';
 import App from './App';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
+  <BrowserRouter>
+    <GlobalContexts>
       <App />
-    </BrowserRouter>
-  </Provider>,
+    </GlobalContexts>
+  </BrowserRouter>,
   document.getElementById('root')
 );

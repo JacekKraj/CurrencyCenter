@@ -1,0 +1,12 @@
+@import './../../../scssUtilities/index.module.scss';
+
+.formInfo {
+  margin: 2em 0 1.75em;
+  text-align: center;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.answer {
+  color: $green-main;
+}

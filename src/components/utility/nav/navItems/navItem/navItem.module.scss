@@ -21,7 +21,7 @@
 }
 
 .navItem:hover {
-  background-color: $green-main-ligher;
+  background-color: $green-main-lighter;
   width: 95%;
   @include laptopSm {
     background-color: unset;

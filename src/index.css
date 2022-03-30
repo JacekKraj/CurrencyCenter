@@ -12,3 +12,7 @@ a {
 body {
   background-color: rgb(251, 251, 251);
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+}
