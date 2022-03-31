@@ -31,5 +31,6 @@ module.exports = {
   plugins: [new MiniCssExtractPlugin(), new HtmlWebpackPlugin({ template: './src/index.html' }), new Dotenv()],
   devServer: {
     static: './dist',
+    historyApiFallback: true,
   },
 };
