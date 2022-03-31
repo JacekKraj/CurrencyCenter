@@ -5,6 +5,7 @@ import { AuthContext } from './context/providers/AuthContextProvider';
 import './index.css';
 import RoutesContainer from './routes/RoutesContainer';
 import RouteLoader from './components/utility/routeLoader/RouteLoader';
+import { AuthErrors } from './utilities/errorsTexts/auth';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -15,7 +16,7 @@ const App: React.FC = () => {
     if (!user) return false;
 
     if (!user.emailVerified) {
-      setError("You haven't verify your email address yet, please verify to sign in.");
+      setError(AuthErrors.EMAIL_NOT_VERIFIED);
       return false;
     }
 

@@ -7,7 +7,7 @@ import FormikTextInput from '../../utility/formik/FormikTextInput';
 import Button from '../../utility/button/Button';
 import classes from './../forms.module.scss';
 import FormInfo from '../formInfo/FormInfo';
-import Error from '../../../utilities/error/Error';
+import Error from '../../utility/error/Error';
 
 const SignIn: React.FC = () => {
   const { authenticate, errorMessage } = React.useContext(AuthContext);

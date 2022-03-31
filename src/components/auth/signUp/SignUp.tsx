@@ -8,7 +8,8 @@ import classes from './../forms.module.scss';
 import Button from './../../utility/button/Button';
 import FormInfo from '../formInfo/FormInfo';
 import { AuthContext } from '../../../context/providers/AuthContextProvider';
-import Error from '../../../utilities/error/Error';
+import Error from '../../utility/error/Error';
+import { AuthErrors } from '../../../utilities/errorsTexts/auth';
 
 const SignUp: React.FC = () => {
   const { register, errorMessage } = React.useContext(AuthContext);
@@ -20,7 +21,9 @@ const SignUp: React.FC = () => {
   };
 
   const hasErrors = (errors: FormikErrors<typeof initialValues>) => {
-    return Object.keys(errors).length !== 0 || errorMessage;
+    const hasFormErrors = Object.keys(errors).length !== 0;
+    const hasFirebaseErrors = errorMessage !== AuthErrors.EMAIL_NOT_VERIFIED && errorMessage;
+    return hasFormErrors || hasFirebaseErrors;
   };
 
   const allFieldsWereTouched = (touched: FormikTouched<typeof initialValues>) => {
@@ -28,9 +31,9 @@ const SignUp: React.FC = () => {
   };
 
   const signUpValidationSchema = Yup.object().shape({
-    email: Yup.string().email('It does not seem to be a valid email address.'),
-    password: Yup.string().min(5, 'Password must have at least 5 characters.').max(15, 'Password must not have more than 15 characters.'),
-    passwordRepeat: Yup.string().oneOf([Yup.ref('password')], 'Both passwords must be equal.'),
+    email: Yup.string().email(AuthErrors.INVALID_EMAIL),
+    password: Yup.string().min(5, AuthErrors.SHORT_PASSWORD).max(15, AuthErrors.LONG_PASSWORD),
+    passwordRepeat: Yup.string().oneOf([Yup.ref('password')], AuthErrors.PASSWORDS_NOT_EQUAL),
   });
 
   const submitForm = (values: typeof initialValues) => {
