@@ -4,6 +4,7 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import MenuBookOutlinedIcon from '@material-ui/icons/MenuBookOutlined';
 import ShowChartOutlinedIcon from '@material-ui/icons/ShowChartOutlined';
 
+import { AuthContext } from '../../../../context/providers/AuthContextProvider';
 import classes from './navItems.module.scss';
 import NavItem from './navItem/NavItem';
 import { breakpoints } from '../../../../utilities/breakpoints/breakpoints';
@@ -22,13 +23,19 @@ const useStyles = makeStyles(() => ({
 }));
 
 const NavItems: React.FC = () => {
+  const { isAuthenticated } = React.useContext(AuthContext);
+
   const iconsStyle = useStyles();
 
   return (
     <ul className={classes.navItems}>
       <NavItem path='' label='Home' icon={<HomeOutlinedIcon className={iconsStyle.navIcon} />} />
-      <NavItem path='diary' label='Your diary' icon={<MenuBookOutlinedIcon className={iconsStyle.navIcon} />} />
-      <NavItem path='rates' label='Exchange rates' icon={<ShowChartOutlinedIcon className={iconsStyle.navIcon} />} />
+      {isAuthenticated && (
+        <React.Fragment>
+          <NavItem path='diary' label='Your diary' icon={<MenuBookOutlinedIcon className={iconsStyle.navIcon} />} />
+          <NavItem path='rates' label='Exchange rates' icon={<ShowChartOutlinedIcon className={iconsStyle.navIcon} />} />
+        </React.Fragment>
+      )}
     </ul>
   );
 };
