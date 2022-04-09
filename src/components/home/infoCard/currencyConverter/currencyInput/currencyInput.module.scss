@@ -1,0 +1,51 @@
+@import './../../../../../scssUtilities/index.module.scss';
+
+$border: 1.5px solid #ccc;
+
+.currencyInput {
+  margin: 1em 0;
+
+  @include tabletHorizontal {
+    margin-top: 0;
+  }
+}
+
+.currencyInput:first-of-type {
+  margin-top: 0;
+}
+
+.label {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 0.5em;
+
+  @include tabletHorizontal {
+    font-size: 14px;
+  }
+}
+
+.inputsContainer {
+  display: flex;
+  border: $border;
+  border-radius: 5px;
+}
+
+.numberInput,
+.currencySelect {
+  outline: none;
+  border: none;
+  display: block;
+  padding: 0.5em;
+  font-size: 18px;
+}
+
+.numberInput {
+  border-right: $border;
+  width: 70%;
+  font-weight: bold;
+}
+
+.currencySelect {
+  flex-grow: 1;
+}

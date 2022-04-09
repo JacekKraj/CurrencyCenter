@@ -1,0 +1,66 @@
+@import './../../../../scssUtilities/index.module.scss';
+
+.info {
+  color: $font-main;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3em;
+  justify-content: space-evenly;
+
+  @include tabletHorizontal {
+    margin-bottom: 1em;
+  }
+}
+
+.texts {
+  flex-basis: 55%;
+
+  @include mobileHorizontal {
+    flex-basis: 50%;
+  }
+}
+
+.mainText {
+  margin-bottom: 1em;
+  font-size: 28px;
+
+  @include mobileVertical {
+    font-size: 32px;
+  }
+
+  @include mobileHorizontal {
+    font-size: 34px;
+  }
+
+  @include tabletHorizontal {
+    font-size: 40px;
+  }
+}
+
+.secondaryText {
+  font-size: 15px;
+
+  @include mobileVertical {
+    font-size: 17px;
+  }
+
+  @include mobileHorizontal {
+    font-size: 17px;
+  }
+
+  @include tabletHorizontal {
+    font-size: 20px;
+  }
+}
+
+.imageContainer {
+  flex-basis: 40%;
+
+  @include mobileHorizontal {
+    flex-basis: 30%;
+  }
+}
+
+.image {
+  width: 100%;
+}
