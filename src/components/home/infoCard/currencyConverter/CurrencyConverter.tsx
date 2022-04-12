@@ -1,7 +1,11 @@
 import React from 'react';
 import SwapHorizIcon from '@material-ui/icons//SwapHoriz';
 import { makeStyles } from '@material-ui/core/styles';
+import classnames from 'classnames';
 
+import { CurrencyComparison } from '../../../../utilities/ratesAPI/responseTypes';
+import { Endpoints } from './../../../../utilities/ratesAPI/endpoints';
+import axios from './../../../../utilities/ratesAPI/axios';
 import classes from './currencyConverter.module.scss';
 import { breakpoints } from './../../../../utilities/breakpoints/breakpoints';
 import CurrencyInput, { CurrencyInputValues } from './currencyInput/CurrencyInput';
@@ -18,32 +22,133 @@ const useStyles = makeStyles(() => ({
     right: -12,
     top: 30,
     color: '#07a549',
+    cursor: 'pointer',
+    transition: '300ms',
+    outline: 'none',
     [tabletHorizontal]: {
       position: 'relative',
       right: 0,
       top: 5,
     },
   },
+  swapRotated: {
+    transform: 'rotate(180deg)',
+  },
 }));
 
+interface Status {
+  wasChangedByUser: boolean;
+  last: string;
+}
+
+const HAVE = 'have';
+const RECEIVE = 'receive';
+
 const CurrencyConverter: React.FC = () => {
-  const [fromInputValues, setFromInputValues] = React.useState<CurrencyInputValues>({ currency: Currencies.PLN });
-  const [toInputValues, settoInputValues] = React.useState<CurrencyInputValues>({ currency: Currencies.USD });
+  const [haveInputValues, setHaveInputValues] = React.useState<CurrencyInputValues>({ currency: Currencies.PLN, value: 100 });
+  const [receiveInputValues, setReceiveInputValues] = React.useState<CurrencyInputValues>({ currency: Currencies.USD, value: '' });
+  const [inputsSwapped, setInputsSwapped] = React.useState<boolean>(false);
+  const [rate, setRate] = React.useState<number>(0.0);
+  const [status, setStatus] = React.useState<Status>({ wasChangedByUser: true, last: HAVE });
 
   const iconsStyle = useStyles();
+
+  const getNewCurrencies = (currency: Currencies, type: string) => {
+    const isHaveType = type === HAVE;
+    const notChangedCurrency = isHaveType ? receiveInputValues.currency : haveInputValues.currency;
+
+    let newHaveCurrency: Currencies, newReceiveCurrency: Currencies;
+
+    if (currency === Currencies.PLN && notChangedCurrency === Currencies.PLN) {
+      newHaveCurrency = isHaveType ? Currencies.PLN : receiveInputValues.currency;
+      newReceiveCurrency = isHaveType ? haveInputValues.currency : Currencies.PLN;
+    } else {
+      newHaveCurrency = isHaveType ? currency : Currencies.PLN;
+      newReceiveCurrency = isHaveType ? Currencies.PLN : currency;
+    }
+
+    return { newHaveCurrency, newReceiveCurrency };
+  };
+
+  const changeCurrency = (currency: Currencies, type: string) => {
+    const { newHaveCurrency, newReceiveCurrency } = getNewCurrencies(currency, type);
+
+    setReceiveInputValues((currState) => ({ ...currState, currency: newReceiveCurrency }));
+    setHaveInputValues((currState) => ({ ...currState, currency: newHaveCurrency }));
+
+    setStatus({ last: type, wasChangedByUser: true });
+  };
+
+  const changeValue = (value: number | '', type: string) => {
+    const setter = type === HAVE ? setHaveInputValues : setReceiveInputValues;
+    setter((currState) => ({ ...currState, value }));
+
+    setStatus({ last: type, wasChangedByUser: true });
+  };
+
+  const swapInputs = () => {
+    setHaveInputValues(receiveInputValues);
+    setReceiveInputValues(haveInputValues);
+    setInputsSwapped((currState) => !currState);
+
+    setStatus({ last: status.last === HAVE ? HAVE : RECEIVE, wasChangedByUser: true });
+  };
+
+  React.useEffect(() => {
+    if (!status.wasChangedByUser) return;
+
+    const getPropsToCompare = () => {
+      const isHaveStatus = status.last === HAVE;
+
+      const value = isHaveStatus ? haveInputValues.value : receiveInputValues.value;
+      const fromCurrency = isHaveStatus ? haveInputValues.currency : receiveInputValues.currency;
+      const toCurrency = isHaveStatus ? receiveInputValues.currency : haveInputValues.currency;
+
+      return { value, fromCurrency, toCurrency };
+    };
+
+    const getNewComparisonData = async () => {
+      const { value, fromCurrency, toCurrency } = getPropsToCompare();
+
+      if (value) return await axios.get<CurrencyComparison>(`${Endpoints.COMAPRE_CURRENCIES}/${value}/${fromCurrency}/${toCurrency}/`);
+
+      const onEmptyInputData = {
+        data: {
+          result: {
+            exchangeAmount: 0,
+            exchangeRate: rate,
+          },
+        },
+      };
+
+      return onEmptyInputData;
+    };
+
+    const updateComparison = async () => {
+      const { data } = await getNewComparisonData();
+
+      setRate(+data.result.exchangeRate);
+
+      const setter = status.last === HAVE ? setReceiveInputValues : setHaveInputValues;
+      setter((currState: CurrencyInputValues) => ({ ...currState, value: +data.result.exchangeAmount }));
+    };
+
+    updateComparison();
+    setStatus((currState) => ({ ...currState, wasChangedByUser: false }));
+  }, [status.wasChangedByUser]);
 
   return (
     <div className={classes.currencyConverter}>
       <div className={classes.inputsWithConnector}>
-        <CurrencyInput label='have' values={fromInputValues} />
+        <CurrencyInput label={HAVE} values={{ ...haveInputValues, changeCurrency, changeValue }} />
         <div className={classes.inputsConnector}>
           <div className={classes.connectorLine}></div>
-          <SwapHorizIcon className={iconsStyle.swap} />
+          <SwapHorizIcon className={classnames(iconsStyle.swap, inputsSwapped && iconsStyle.swapRotated)} onClick={swapInputs} />
         </div>
-        <CurrencyInput label='receive' values={toInputValues} />
+        <CurrencyInput label={RECEIVE} values={{ ...receiveInputValues, changeCurrency, changeValue }} />
       </div>
       <p className={classes.rate}>
-        Current rate: <span className={classes.rateValue}>3,5678</span>
+        Current rate: <span className={classes.rateValue}>{rate}</span>
       </p>
     </div>
   );
