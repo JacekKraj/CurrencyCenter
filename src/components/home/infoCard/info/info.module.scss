@@ -13,16 +13,12 @@
 }
 
 .texts {
-  flex-basis: 55%;
-
-  @include mobileHorizontal {
-    flex-basis: 50%;
-  }
+  flex-basis: 50%;
 }
 
 .mainText {
   margin-bottom: 1em;
-  font-size: 28px;
+  font-size: 30px;
 
   @include mobileVertical {
     font-size: 32px;
@@ -38,7 +34,7 @@
 }
 
 .secondaryText {
-  font-size: 15px;
+  font-size: 16px;
 
   @include mobileVertical {
     font-size: 17px;
@@ -54,13 +50,18 @@
 }
 
 .imageContainer {
-  flex-basis: 40%;
+  flex-basis: 45%;
 
   @include mobileHorizontal {
+    flex-basis: 25%;
+  }
+
+  @include tabletHorizontal {
     flex-basis: 30%;
   }
 }
 
 .image {
   width: 100%;
+  min-width: 80px;
 }

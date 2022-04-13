@@ -24,7 +24,6 @@ const useStyles = makeStyles(() => ({
     color: '#07a549',
     cursor: 'pointer',
     transition: '300ms',
-    outline: 'none',
     [tabletHorizontal]: {
       position: 'relative',
       right: 0,
