@@ -1,5 +1,7 @@
 import axios from 'axios';
 
-export default axios.create({
+const instance = axios.create({
   baseURL: 'https://klient.internetowykantor.pl/api/public/',
 });
+
+export default instance;

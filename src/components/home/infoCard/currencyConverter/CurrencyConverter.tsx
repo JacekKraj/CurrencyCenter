@@ -142,12 +142,19 @@ const CurrencyConverter: React.FC = () => {
         <CurrencyInput label={HAVE} values={{ ...haveInputValues, changeCurrency, changeValue }} />
         <div className={classes.inputsConnector}>
           <div className={classes.connectorLine}></div>
-          <SwapHorizIcon className={classnames(iconsStyle.swap, inputsSwapped && iconsStyle.swapRotated)} onClick={swapInputs} />
+          <SwapHorizIcon
+            className={classnames(iconsStyle.swap, inputsSwapped && iconsStyle.swapRotated)}
+            onClick={swapInputs}
+            data-test='swap-button'
+          />
         </div>
         <CurrencyInput label={RECEIVE} values={{ ...receiveInputValues, changeCurrency, changeValue }} />
       </div>
       <p className={classes.rate}>
-        Current rate: <span className={classes.rateValue}>{rate}</span>
+        Current rate:{' '}
+        <span className={classes.rateValue} data-test='currency-rate'>
+          {rate}
+        </span>
       </p>
     </div>
   );

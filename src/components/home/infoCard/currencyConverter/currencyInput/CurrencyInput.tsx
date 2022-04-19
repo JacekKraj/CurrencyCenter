@@ -58,6 +58,7 @@ const CurrencyInput: React.FC<Props> = (props) => {
       <div className={classes.inputsContainer}>
         <input
           className={classes.numberInput}
+          data-test={`${label}-value-input`}
           step={1}
           min={0}
           type='number'
@@ -66,7 +67,13 @@ const CurrencyInput: React.FC<Props> = (props) => {
           value={value}
           onChange={onChangeValue}
         />
-        <select name='currencies' className={classes.currencySelect} value={currency} onChange={onChangeCurrency}>
+        <select
+          name='currencies'
+          className={classes.currencySelect}
+          value={currency}
+          onChange={onChangeCurrency}
+          data-test={`${label}-currency-input`}
+        >
           <option value={Currencies.PLN}>{Currencies.PLN}</option>
           <option value={Currencies.USD}>{Currencies.USD}</option>
           <option value={Currencies.EUR}>{Currencies.EUR}</option>
