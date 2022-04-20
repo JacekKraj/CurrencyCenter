@@ -1,29 +1,37 @@
 import React from 'react';
+import ValueInput from 'react-currency-input-field';
 
 import classes from './currencyInput.module.scss';
 import { Currencies } from './../../../../../utilities/enums/currencies';
 
-export interface CurrencyInputValues {
-  value: number | '';
+export type CurrencyInputValue = string | undefined;
+
+export interface CurrencyInputProps {
+  value: CurrencyInputValue;
   currency: Currencies;
 }
 
 interface Props {
   label: string;
-  values: CurrencyInputValues & {
+  values: CurrencyInputProps & {
     changeCurrency: (currency: Currencies, type: string) => void;
-    changeValue: (value: number | '', type: string) => void;
+    changeValue: (value: CurrencyInputValue, type: string) => void;
   };
 }
+
+const WRONG_SIGNS = ['-'];
+const MAX_VALUE_LENGTH = 10;
 
 const CurrencyInput: React.FC<Props> = (props) => {
   const { label, values } = props;
   const { value, currency, changeValue, changeCurrency } = values;
 
-  const WRONG_SIGNS = ['e', 'E', '+', '-'];
+  const valueInputRef = React.useRef<HTMLInputElement>(null);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    WRONG_SIGNS.includes(e.key) && e.preventDefault();
+    if ((values.value && values.value.length > MAX_VALUE_LENGTH && e.key !== 'Backspace') || WRONG_SIGNS.includes(e.key)) {
+      e.preventDefault();
+    }
   };
 
   const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
@@ -34,38 +42,55 @@ const CurrencyInput: React.FC<Props> = (props) => {
     changeCurrency(event.target.value as Currencies, label);
   };
 
-  const inputIsValid = (value: string) => {
-    const valueNumbers = value.split('');
+  const setCursorPosition = (value: CurrencyInputValue) => {
+    if (value && valueInputRef.current) {
+      valueInputRef.current.selectionEnd = value.length + 1;
+    }
+  };
 
-    if (!valueNumbers.includes('.')) return true;
+  const isValueToAddZero = (value: CurrencyInputValue) => {
+    return value && value[0] === '.' && value.length > 1;
+  };
 
-    // check if has more than two numbers after "."
-    if (valueNumbers.length - valueNumbers.indexOf('.') > 3) return false;
+  const isValueToChange = (value: CurrencyInputValue) => {
+    if (value && values.value && value.length > values.value.length && value.length > MAX_VALUE_LENGTH) return false;
 
     return true;
   };
 
-  const onChangeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (inputIsValid(event.target.value)) {
-      const valueToSet = event.target.value === '' ? '' : +event.target.value;
-      changeValue(valueToSet, label);
+  const modifyValue = (value: CurrencyInputValue) => {
+    if (!isValueToChange(value)) return values.value;
+
+    if (isValueToAddZero(value)) {
+      setCursorPosition(value);
+      return `0${value}`;
     }
+
+    return value;
+  };
+
+  const onChangeValue = (value: CurrencyInputValue) => {
+    const modifiedValue = modifyValue(value);
+
+    changeValue(modifiedValue, label);
   };
 
   return (
     <div className={classes.currencyInput}>
       <p className={classes.label}>{label}</p>
       <div className={classes.inputsContainer}>
-        <input
+        <ValueInput
           className={classes.numberInput}
           data-test={`${label}-value-input`}
-          step={1}
-          min={0}
-          type='number'
+          defaultValue={value}
+          decimalsLimit={2}
+          decimalSeparator='.'
           onKeyDown={handleKeyDown}
           onPaste={handlePaste}
           value={value}
-          onChange={onChangeValue}
+          allowNegativeValue={false}
+          onValueChange={onChangeValue}
+          ref={valueInputRef}
         />
         <select
           name='currencies'
