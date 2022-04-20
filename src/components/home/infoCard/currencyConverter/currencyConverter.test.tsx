@@ -14,8 +14,8 @@ const setup = () => {
 
 const getTestedElements = (wrapper: ReactWrapper) => {
   return {
-    receiveValueInput: findByTestAttr(wrapper, 'receive-value-input'),
-    haveValueInput: findByTestAttr(wrapper, 'have-value-input'),
+    receiveValueInput: findByTestAttr(wrapper, 'receive-value-input').first(),
+    haveValueInput: findByTestAttr(wrapper, 'have-value-input').first(),
     receiveCurrencyInput: findByTestAttr(wrapper, 'receive-currency-input'),
     haveCurrencyInput: findByTestAttr(wrapper, 'have-currency-input'),
     rate: findByTestAttr(wrapper, 'currency-rate'),
@@ -53,7 +53,7 @@ describe('<CurrencyConverter />', () => {
           wrapper.update();
           const { rate, receiveValueInput } = getTestedElements(wrapper);
           expect(rate.text()).toEqual('4');
-          expect(receiveValueInput.prop('value')).toEqual(25);
+          expect(receiveValueInput.prop('value')).toEqual('25');
           done();
         });
       });
@@ -71,8 +71,8 @@ describe('<CurrencyConverter />', () => {
           swapButton.simulate('click');
           const { receiveCurrencyInput, haveCurrencyInput, receiveValueInput, haveValueInput } = getTestedElements(wrapper);
           // 100, PLN, USD are initial values
-          expect(receiveValueInput.prop('value')).toEqual(100);
-          expect(haveValueInput.prop('value')).toEqual(25);
+          expect(receiveValueInput.prop('value')).toEqual('100');
+          expect(haveValueInput.prop('value')).toEqual('25');
           expect(receiveCurrencyInput.prop('value')).toEqual(Currencies.PLN);
           expect(haveCurrencyInput.prop('value')).toEqual(Currencies.USD);
           done();
