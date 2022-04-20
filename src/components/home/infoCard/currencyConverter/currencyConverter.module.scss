@@ -1,0 +1,78 @@
+@import './../../../../scssUtilities/index.module.scss';
+
+.currencyConverter {
+  padding: 1.25em 1em;
+  box-shadow: 0 1px 3px 0 rgb(38 56 71 / 7%), 0 12px 40px -3px rgb(103 118 131 / 26%), 0 3px 70px -2px rgb(217 222 231 / 80%);
+  border-radius: 6px;
+  background-color: $background-white;
+  color: $font-main;
+
+  @include mobileHorizontal {
+    padding: 1.25em;
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+
+  @include tabletHorizontal {
+    padding: 1.25em;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+}
+
+.inputsWithConnector {
+  position: relative;
+  padding-right: 35px;
+  margin-bottom: 1.5em;
+
+  @include tabletHorizontal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: unset;
+    margin-bottom: 0.5em;
+  }
+}
+
+.inputsConnector {
+  position: absolute;
+  bottom: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5px;
+
+  @include tabletHorizontal {
+    all: initial;
+  }
+}
+
+.connectorLine {
+  position: absolute;
+  right: 0;
+  top: 0px;
+  width: 20px;
+  height: 120%;
+  border: 2px solid #ccc;
+  border-bottom-right-radius: 50px;
+  border-left: none;
+  border-top-right-radius: 50px;
+
+  @include tabletHorizontal {
+    all: initial;
+  }
+}
+
+.rate {
+  font-size: 14px;
+
+  @include tabletHorizontal {
+    font-size: 16px;
+  }
+}
+
+.rateValue {
+  font-weight: bold;
+  margin-left: 0.25em;
+}
