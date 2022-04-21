@@ -113,13 +113,13 @@ const CurrencyConverter: React.FC = () => {
     };
 
     const valueIsValid = (value: CurrencyInputValue) => {
-      return value && value !== '0' && value !== '0.' && value !== '0.0' && value !== '0.00';
+      return value && Number(value) > 0;
     };
 
-    const getNewComparisonData = async () => {
+    const getNewComparisonData = () => {
       const { value, fromCurrency, toCurrency } = getPropsToCompare();
 
-      if (valueIsValid(value)) return await axios.get<CurrencyComparison>(`${Endpoints.COMAPRE_CURRENCIES}/${value}/${fromCurrency}/${toCurrency}/`);
+      if (valueIsValid(value)) return axios.get<CurrencyComparison>(`${Endpoints.COMAPRE_CURRENCIES}/${value}/${fromCurrency}/${toCurrency}/`);
 
       const onEmptyInputData = {
         data: {
