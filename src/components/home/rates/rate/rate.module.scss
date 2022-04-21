@@ -1,0 +1,91 @@
+@import './../../../../scssUtilities/index.module.scss';
+
+$border-right: 1px solid $green-main-lighter;
+
+.rateComponent {
+  display: block;
+  color: white;
+  padding: 2em 1.5em;
+  flex-basis: 50%;
+  border-right: 1px solid $green-main-lighter;
+
+  @include tabletHorizontal {
+    flex-basis: 25%;
+    padding: 1.25em 1.5em;
+  }
+}
+
+.rateComponent:nth-child(even) {
+  border-right: none;
+
+  @include tabletHorizontal {
+    border-right: $border-right;
+  }
+}
+
+.rateComponent:last-child {
+  @include tabletHorizontal {
+    border-right: none;
+  }
+}
+
+.rateValues {
+  @include mobileHorizontal {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include verticalCustom(650px) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include tabletHorizontal {
+    display: block;
+  }
+}
+
+.rateValues > div {
+  @include mobileHorizontal {
+    flex-basis: 45%;
+  }
+}
+
+.currency,
+.rateValue {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.currency {
+  @include mobileHorizontal {
+    padding-bottom: 0.5em;
+  }
+
+  @include verticalCustom(650px) {
+    padding-bottom: 0.5em;
+  }
+
+  @include tabletHorizontal {
+    padding-bottom: 0;
+  }
+}
+
+.rateValue:before {
+  content: ' ';
+  display: inline-block;
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-right: 0.5em;
+  position: relative;
+  bottom: 3px;
+}
+
+.rateType {
+  font-size: 15px;
+  font-weight: lighter;
+  color: $green-main-lighter;
+  margin: 0.5em 0;
+}
