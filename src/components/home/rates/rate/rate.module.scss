@@ -15,6 +15,10 @@ $border-right: 1px solid $green-main-lighter;
   }
 }
 
+.rateComponent:hover .currency {
+  color: $font-main;
+}
+
 .rateComponent:nth-child(even) {
   border-right: none;
 
@@ -58,6 +62,8 @@ $border-right: 1px solid $green-main-lighter;
 }
 
 .currency {
+  transition: 0.2s;
+
   @include mobileHorizontal {
     padding-bottom: 0.5em;
   }
