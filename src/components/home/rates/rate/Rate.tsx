@@ -4,26 +4,26 @@ import { NavLink } from 'react-router-dom';
 import classes from './rate.module.scss';
 import { Currencies } from '../../../../utilities/enums/currencies';
 
-interface Props {
+export interface Props {
   currency: Currencies;
-  rates: {
+  values: {
     sell: number;
     buy: number;
   };
 }
 
-const Rate: React.FC<Props> = ({ currency, rates }) => {
+const Rate: React.FC<Props> = ({ currency, values }) => {
   return (
     <NavLink to='/' className={classes.rateComponent}>
       <p className={classes.currency}>{currency}</p>
       <div className={classes.rateValues}>
         <div>
           <p className={classes.rateType}>Buy</p>
-          <p className={classes.rateValue}>{rates.buy} PLN</p>
+          <p className={classes.rateValue}>{values.buy} PLN</p>
         </div>
         <div>
           <p className={classes.rateType}>Sell</p>
-          <p className={classes.rateValue}>{rates.sell} PLN</p>
+          <p className={classes.rateValue}>{values.sell} PLN</p>
         </div>
       </div>
     </NavLink>
