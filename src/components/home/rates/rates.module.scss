@@ -1,0 +1,41 @@
+@import './../../../scssUtilities/index.module.scss';
+
+.ratesComponentWrapper {
+  background-color: #fff;
+}
+
+.ratesComponent {
+  background-color: $green-main-darker;
+  color: white;
+  padding: 1.5em 0;
+  @include tabletHorizontal {
+    padding: 1.25em 0.75em 0.75em;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    top: -8em;
+    margin-bottom: -6em;
+  }
+}
+
+.ratesHeader {
+  text-align: center;
+  font-size: 22px;
+
+  @include mobileHorizontal {
+    text-align: left;
+    padding-left: 1em;
+  }
+
+  @include verticalCustom(650px) {
+    text-align: left;
+    padding-left: 1em;
+  }
+}
+
+.ratesContainer {
+  padding: 1.5em 0 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
