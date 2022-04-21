@@ -4,7 +4,7 @@ export interface CurrencyComparison {
     exchangeRate: string;
   };
 }
-interface Rate {
+interface FetchedRate {
   pair: string;
   directExchangeOffers: {
     buyNow: number;
@@ -12,4 +12,4 @@ interface Rate {
   };
 }
 
-export type RatesList = Rate[];
+export type FetchedRatesList = FetchedRate[];

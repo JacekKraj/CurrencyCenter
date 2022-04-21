@@ -1,27 +1,27 @@
 import React from 'react';
 
 import classes from './rates.module.scss';
-import Rate, { Props as RateProps } from './rate/Rate';
+import Rate, { Props as BuildedRates } from './rate/Rate';
 import { Currencies, CurrenciesParis } from '../../../utilities/enums/currencies';
 import axios from './../../../utilities/ratesAPI/axios';
 import { Endpoints } from '../../../utilities/ratesAPI/endpoints';
-import { RatesList } from '../../../utilities/ratesAPI/responseTypes';
+import { FetchedRatesList } from '../../../utilities/ratesAPI/responseTypes';
 
 const Rates: React.FC = () => {
-  const [rates, setRates] = React.useState<RateProps[]>([]);
+  const [rates, setRates] = React.useState<BuildedRates[]>([]);
 
   React.useEffect(() => {
     const fetchRatesFromServer = () => {
-      return axios.get<RatesList>(Endpoints.RATES);
+      return axios.get<FetchedRatesList>(Endpoints.RATES);
     };
 
-    const getRelevantRates = (fatchedRates: RatesList) => {
+    const getRelevantRates = (fatchedRates: FetchedRatesList) => {
       return fatchedRates.filter((rate) => {
         return Object.keys(CurrenciesParis).includes(rate.pair);
       });
     };
 
-    const buildRates = (relevantRates: RatesList) => {
+    const buildRates = (relevantRates: FetchedRatesList) => {
       return relevantRates.map((rate) => {
         return {
           currency: rate.pair.slice(0, 3) as Currencies,
