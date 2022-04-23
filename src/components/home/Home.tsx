@@ -4,6 +4,7 @@ import classes from './home.module.scss';
 import Nav from './../utility/nav/Nav';
 import InfoCard from './infoCard/InfoCard';
 import Rates from './rates/Rates';
+import Features from './features/Features';
 
 const Home: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const Home: React.FC = () => {
       <Nav />
       <InfoCard />
       <Rates />
+      <Features />
     </React.Fragment>
   );
 };

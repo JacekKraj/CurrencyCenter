@@ -1,0 +1,24 @@
+@import './../../../scssUtilities/index.module.scss';
+
+.featuresComponent {
+  background-color: $green-main-lightest;
+  padding: 2em 0;
+
+  @include tabletHorizontal {
+    padding: 6em 0;
+  }
+}
+
+.featuresContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include tabletHorizontal {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}
