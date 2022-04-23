@@ -15,8 +15,8 @@ const Rates: React.FC = () => {
       return axios.get<FetchedRatesList>(Endpoints.RATES);
     };
 
-    const getRelevantRates = (fatchedRates: FetchedRatesList) => {
-      return fatchedRates.filter((rate) => {
+    const getRelevantRates = (fetchedRates: FetchedRatesList) => {
+      return fetchedRates.filter((rate) => {
         return Object.keys(CurrenciesParis).includes(rate.pair);
       });
     };
@@ -49,6 +49,7 @@ const Rates: React.FC = () => {
       <div className={classes.ratesComponent}>
         <h3 className={classes.ratesHeader}>Best current rates</h3>
         <div className={classes.ratesContainer}>
+          {/* {console.log(rates)} */}
           {rates.map((rate) => {
             return <Rate currency={rate.currency} values={rate.values} key={rate.currency} />;
           })}
