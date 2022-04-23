@@ -1,14 +1,19 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 
-import App from './App';
-import { findByTestAttr } from './utilities/tests/testsUtilityFunctions';
+import GlobalContexts from './../../../context/globalContexts';
+import Nav from './Nav';
+import { findByTestAttr } from './../../../utilities/tests/testsUtilityFunctions';
 
 const setup = () => {
+  const history = createMemoryHistory();
   return mount(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Router location={history.location} navigator={history}>
+      <GlobalContexts>
+        <Nav />
+      </GlobalContexts>
+    </Router>
   );
 };
 
@@ -20,6 +25,10 @@ describe('<App />', () => {
       wrapper = setup();
       const showMobileNavIcon = findByTestAttr(wrapper, 'show-mobile-nav-icon').first();
       showMobileNavIcon.simulate('click');
+    });
+
+    afterEach(() => {
+      wrapper.unmount();
     });
     it('shows mobile nav and backdrop on clicking show mobile nav icon', () => {
       const mobileNav = findByTestAttr(wrapper, 'mobile-nav');
