@@ -1,0 +1,54 @@
+@import './../../../scssUtilities/index.module.scss';
+
+.footerWrapper {
+  background-color: $green-main;
+}
+
+.footer {
+  padding: 2.5em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include tabletHorizontal {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2.5em 2em;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}
+
+.texts {
+  color: $green-main-lightest;
+  font-size: 14px;
+  margin-bottom: 2em;
+  font-weight: lighter;
+
+  @include mobileHorizontal {
+    font-size: 17px;
+  }
+
+  @include tabletHorizontal {
+    margin-bottom: 0;
+    font-size: 15px;
+  }
+}
+
+.footerLink {
+  color: inherit;
+  padding: 0 0.75em;
+  cursor: pointer;
+
+  @include tabletHorizontal {
+    padding: 0 1em;
+  }
+}
+
+.footerLink:hover {
+  color: white;
+}
+
+.icons {
+  display: flex;
+}
