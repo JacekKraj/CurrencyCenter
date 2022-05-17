@@ -1,0 +1,29 @@
+@import './../../scssUtilities/index.module.scss';
+
+.banksComparisonContentWrapper {
+  padding: 1.5em 1em;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  @include mobileHorizontal {
+    padding: 1.5em 1.5em;
+  }
+
+  @include tabletHorizontal {
+    padding: 2em 3em;
+  }
+
+  @include laptopSm {
+    padding: 3em 0 3em;
+  }
+}
+
+.ratesValidationInfo {
+  color: $font-main;
+  padding: 0 0 1em;
+  font-size: 14px;
+
+  @include mobileHorizontal {
+    font-size: 16px;
+  }
+}

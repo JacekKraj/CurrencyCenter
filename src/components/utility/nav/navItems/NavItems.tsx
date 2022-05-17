@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import MenuBookOutlinedIcon from '@material-ui/icons/MenuBookOutlined';
 import ShowChartOutlinedIcon from '@material-ui/icons/ShowChartOutlined';
 
@@ -29,13 +29,9 @@ const NavItems: React.FC = () => {
 
   return (
     <ul className={classes.navItems}>
-      <NavItem path='' label='Home' icon={<HomeOutlinedIcon className={iconsStyle.navIcon} />} />
-      {isAuthenticated && (
-        <React.Fragment>
-          <NavItem path='diary' label='Your diary' icon={<MenuBookOutlinedIcon className={iconsStyle.navIcon} />} />
-          <NavItem path='rates' label='Exchange rates' icon={<ShowChartOutlinedIcon className={iconsStyle.navIcon} />} />
-        </React.Fragment>
-      )}
+      {isAuthenticated && <NavItem path='Diary' label='Diary' icon={<MenuBookOutlinedIcon className={iconsStyle.navIcon} />} />}
+      <NavItem path='Rates' label='Exchange rates' icon={<ShowChartOutlinedIcon className={iconsStyle.navIcon} />} />
+      <NavItem path='Banks' label='Banks Comparison' icon={<AccountBalanceIcon className={iconsStyle.navIcon} />} />
     </ul>
   );
 };

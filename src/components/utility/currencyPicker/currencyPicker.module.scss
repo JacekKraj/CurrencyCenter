@@ -1,0 +1,16 @@
+@import './../../../scssUtilities/index.module.scss';
+
+.currencyPicker {
+  outline: none;
+  border: 2px solid #eee;
+  border-radius: 25px;
+  padding: 0.5em 0.75em;
+  font-weight: bold;
+  background-color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.currencyPicker:hover {
+  border-color: #ddd;
+}

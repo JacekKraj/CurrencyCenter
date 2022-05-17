@@ -1,0 +1,45 @@
+@import './../../../scssUtilities/index.module.scss';
+
+.header {
+  @include custom(500px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5em 0 2em;
+
+    @include tabletHorizontal {
+      margin: 0.5em 0 3em;
+    }
+  }
+}
+
+.headerTitle {
+  color: $font-main;
+
+  @include tabletHorizontal {
+    font-size: 36px;
+  }
+}
+
+.picker {
+  margin: 2em 0;
+  font-size: 16px;
+
+  @include custom(500px) {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  @include tabletHorizontal {
+    font-size: 20px;
+  }
+}
+
+.headerInfo {
+  color: $font-main;
+  font-size: 14px;
+
+  @include custom(500px) {
+    font-size: 16px;
+  }
+}

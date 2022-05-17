@@ -1,0 +1,34 @@
+@import './../../../../scssUtilities/index.module.scss';
+
+.tableRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: lighter;
+  color: $font-main;
+  font-size: 13px;
+  border-bottom: 1px solid $green-main;
+  padding: 1.5em 0.5em;
+
+  @include custom(500px) {
+    padding: 1em 0.5em;
+    font-size: 14px;
+  }
+}
+
+.tableRow:nth-child(even) {
+  background-color: $green-main-lightest;
+}
+
+.tableHeader > p {
+  font-weight: bold;
+  color: $font-main;
+}
+
+.tableRow > p {
+  flex-basis: 18%;
+}
+
+.tableRow > .bankName {
+  flex-basis: 28%;
+}
