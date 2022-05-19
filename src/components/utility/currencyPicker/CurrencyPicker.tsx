@@ -25,8 +25,16 @@ const CurrencyPicker: React.FC<Props> = (props) => {
       );
     });
   };
+
   return (
-    <select name='currencies' value={value} onChange={() => changeValue(Currencies.PLN)} className={classnames(classes.currencyPicker, className)}>
+    <select
+      name='currencies'
+      value={value}
+      onChange={(e) => {
+        changeValue(e.target.value as Currencies);
+      }}
+      className={classnames(classes.currencyPicker, className)}
+    >
       {renderOptions()}
     </select>
   );
