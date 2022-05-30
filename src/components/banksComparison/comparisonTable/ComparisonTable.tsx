@@ -1,24 +1,34 @@
-import React from 'react';
+import React, { SetStateAction, Dispatch } from 'react';
 
 import classes from './comparisonTable.module.scss';
 import { Currencies } from './../../../utilities/enums/currencies';
 import { banks } from './../../../utilities/ratesAPI/banks';
-import { sortByKey } from './../../../utilities/helperFunctions/sortByKey';
+import { sortObjectsByKey } from '../../../utilities/helperFunctions/sortObjectsByKey';
 import TableRow from './tableRow/TableRow';
 import axios from './../../../utilities/ratesAPI/axios';
 import { BanksComparisonResponse, BankComparisonValues } from './../../../utilities/ratesAPI/responseTypes';
 import { Endpoints } from './../../../utilities/ratesAPI/endpoints';
+import TableHeader from './tableHeader/TableHeader';
+
+export enum SortingConditions {
+  BANK = 'bank',
+  SELL = 'sell',
+  BUY = 'buy',
+  SPREAD = 'spread',
+}
 
 interface Props {
   currency: Currencies;
+  setValidFrom: Dispatch<SetStateAction<Date>>;
 }
 
 interface BuildedComparison extends BankComparisonValues {
   bank: string;
 }
 
-const ComparisonTable: React.FC<Props> = ({ currency }) => {
+const ComparisonTable: React.FC<Props> = ({ currency, setValidFrom }) => {
   const [comparisons, setComparisons] = React.useState<BuildedComparison[]>([]);
+  const [sortingCondition, setSortingCondition] = React.useState<SortingConditions>(SortingConditions.BANK);
 
   React.useEffect(() => {
     const fetchBanksComparisons = async () => {
@@ -46,16 +56,22 @@ const ComparisonTable: React.FC<Props> = ({ currency }) => {
     const getComparisons = async () => {
       const { data } = await fetchBanksComparisons();
       const buildedComparisons = buildComparisons(data);
-      const sortedComparisons = sortByKey(buildedComparisons, 'bank');
+      const sortedComparisons = sortObjectsByKey(buildedComparisons, 'bank');
+      setValidFrom(new Date(data.valid_from));
       setComparisons(sortedComparisons);
     };
 
     getComparisons();
   }, [currency]);
 
+  React.useEffect(() => {
+    const newSortedComparisons = sortObjectsByKey(comparisons, sortingCondition);
+    setComparisons(newSortedComparisons);
+  }, [sortingCondition]);
+
   return (
     <div className={classes.comparisonTable}>
-      <TableRow bank='Bank' buy='Buy' sell='Sell' spread='Spread' isHeader />
+      <TableHeader setSortingCondition={setSortingCondition} />
       {comparisons.map((comparison) => {
         return <TableRow key={comparison.bank} {...comparison} />;
       })}

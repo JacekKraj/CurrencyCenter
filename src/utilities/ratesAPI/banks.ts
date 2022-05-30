@@ -16,7 +16,7 @@ export const banks: { [key: string]: string } = {
   getin: 'Getin Bank',
   ing: 'ING Bank Śląski',
   mbank: 'mBank',
-  millenium: 'Millenium',
+  millennium: 'Millenium',
   nordea: 'Nordea Bank',
   pekao: 'Pekao SA',
   pkobp: 'PKO BP',

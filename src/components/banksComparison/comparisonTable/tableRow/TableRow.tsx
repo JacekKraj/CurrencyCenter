@@ -16,11 +16,11 @@ const TableRow: React.FC<Props> = (props) => {
 
   const suffix = !isHeader ? 'zł' : '';
   return (
-    <div className={classnames(classes.tableRow, isHeader && classes.tableHeader)}>
-      <p className={classes.bankName}>{bank}</p>
-      <p>{buy + suffix} </p>
-      <p>{sell + suffix} </p>
-      <p>{spread + suffix} </p>
+    <div className={classes.tableRow}>
+      <p className={classnames(classes.bankName, classes.tableItem)}>{bank}</p>
+      <p className={classes.tableItem}>{buy + suffix} </p>
+      <p className={classes.tableItem}>{sell + suffix} </p>
+      <p className={classes.tableItem}>{spread + suffix} </p>
     </div>
   );
 };

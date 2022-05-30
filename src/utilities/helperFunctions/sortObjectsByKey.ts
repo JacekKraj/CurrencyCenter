@@ -1,4 +1,4 @@
-export const sortByKey = <T extends object, K extends keyof T>(elements: T[], key: K): T[] => {
+export const sortObjectsByKey = <T extends object, K extends keyof T>(elements: T[], key: K): T[] => {
   const compare = (a: T, b: T) => {
     if (a[key] > b[key]) return 1;
 

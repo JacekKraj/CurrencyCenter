@@ -20,15 +20,10 @@
   background-color: $green-main-lightest;
 }
 
-.tableHeader > p {
-  font-weight: bold;
-  color: $font-main;
-}
-
-.tableRow > p {
+.tableItem {
   flex-basis: 18%;
 }
 
-.tableRow > .bankName {
+.bankName {
   flex-basis: 28%;
 }

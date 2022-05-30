@@ -22,8 +22,14 @@ export interface BankComparisonValues {
   spread: string;
 }
 
-export type BanksComparisonResponse = {
+interface BanksComparison {
   [key: string]: {
     [key in Currencies]: BankComparisonValues;
   };
-};
+}
+
+interface BanksComparisonValidFrom {
+  valid_from: Date;
+}
+
+export type BanksComparisonResponse = BanksComparison & BanksComparisonValidFrom;
