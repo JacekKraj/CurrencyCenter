@@ -47,6 +47,7 @@ const ComparisonTable: React.FC<Props> = ({ currency, setValidFrom }) => {
           ...fetchedComaprisons[key][currency],
           bank: banks[key],
         };
+
         buildedComparisons.push(buildedComparison);
       }
 

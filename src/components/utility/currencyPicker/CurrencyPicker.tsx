@@ -9,10 +9,11 @@ interface Props {
   changeValue: (value: Currencies) => void;
   blockedCurrencies?: Currencies[];
   className?: string;
+  dataTest?: string;
 }
 
 const CurrencyPicker: React.FC<Props> = (props) => {
-  const { value, changeValue, blockedCurrencies, className } = props;
+  const { value, changeValue, blockedCurrencies, className, dataTest } = props;
 
   const renderOptions = () => {
     const filteredCurrencies = Object.values(Currencies).filter((currency) => !blockedCurrencies?.includes(currency));
@@ -30,6 +31,7 @@ const CurrencyPicker: React.FC<Props> = (props) => {
     <select
       name='currencies'
       value={value}
+      data-test={dataTest}
       onChange={(e) => {
         changeValue(e.target.value as Currencies);
       }}

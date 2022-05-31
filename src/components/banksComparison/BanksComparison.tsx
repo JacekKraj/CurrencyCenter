@@ -18,7 +18,7 @@ const BanksComparison: React.FC = () => {
       <div className={classes.banksComparisonContentWrapper}>
         <ComparisonHeader currency={currency} setCurrency={setCurrency} />
         <ComparisonTable currency={currency} setValidFrom={setValidFrom} />
-        <p className={classes.ratesValidationInfo}>{`Exchange rates valid as of ${getBuildedDate(validFrom)}`}</p>
+        <p className={classes.ratesValidationInfo} data-test='valid-from-date'>{`Exchange rates valid as of ${getBuildedDate(validFrom)}`}</p>
       </div>
       <Footer />
     </React.Fragment>

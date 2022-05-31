@@ -13,8 +13,16 @@ const ComparisonHeader: React.FC<Props> = ({ currency, setCurrency }) => {
   return (
     <div className={classes.comparisonHeader}>
       <div className={classes.header}>
-        <h1 className={classes.headerTitle}>{currency} exchange rates in banks</h1>
-        <CurrencyPicker value={currency} changeValue={setCurrency} blockedCurrencies={[Currencies.PLN]} className={classes.picker} />
+        <h1 className={classes.headerTitle} data-test='comparison-header-currency-info'>
+          {currency} exchange rates in banks
+        </h1>
+        <CurrencyPicker
+          value={currency}
+          changeValue={setCurrency}
+          blockedCurrencies={[Currencies.PLN]}
+          className={classes.picker}
+          dataTest='comparison-currency-picker'
+        />
       </div>
 
       <p className={classes.headerInfo}>

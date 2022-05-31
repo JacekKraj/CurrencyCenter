@@ -15,7 +15,7 @@ const TableHeader: React.FC<Props> = ({ setSortingCondition }) => {
   const renderButtons = () => {
     return Object.values(SortingConditions).map((condition) => {
       return (
-        <button onClick={() => handleClick(condition)} key={condition}>
+        <button onClick={() => handleClick(condition)} key={condition} data-test={`sort-button-${condition}`}>
           {condition}
         </button>
       );

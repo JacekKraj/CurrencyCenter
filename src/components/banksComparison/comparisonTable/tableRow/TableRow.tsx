@@ -17,9 +17,13 @@ const TableRow: React.FC<Props> = (props) => {
   const suffix = !isHeader ? 'zł' : '';
   return (
     <div className={classes.tableRow}>
-      <p className={classnames(classes.bankName, classes.tableItem)}>{bank}</p>
+      <p className={classnames(classes.bankName, classes.tableItem)} data-test='bank-name'>
+        {bank}
+      </p>
       <p className={classes.tableItem}>{buy + suffix} </p>
-      <p className={classes.tableItem}>{sell + suffix} </p>
+      <p className={classes.tableItem} data-test='bank-sell'>
+        {sell + suffix}
+      </p>
       <p className={classes.tableItem}>{spread + suffix} </p>
     </div>
   );
