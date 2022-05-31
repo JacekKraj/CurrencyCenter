@@ -3,7 +3,7 @@ import SwapHorizIcon from '@material-ui/icons//SwapHoriz';
 import { makeStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 
-import { CurrencyComparison } from '../../../../utilities/ratesAPI/responseTypes';
+import { CurrencyComparisonResponse } from '../../../../utilities/ratesAPI/responseTypes';
 import { Endpoints } from './../../../../utilities/ratesAPI/endpoints';
 import axios from './../../../../utilities/ratesAPI/axios';
 import classes from './currencyConverter.module.scss';
@@ -119,7 +119,8 @@ const CurrencyConverter: React.FC = () => {
     const getNewComparisonData = () => {
       const { value, fromCurrency, toCurrency } = getPropsToCompare();
 
-      if (valueIsValid(value)) return axios.get<CurrencyComparison>(`${Endpoints.COMAPRE_CURRENCIES}/${value}/${fromCurrency}/${toCurrency}/`);
+      if (valueIsValid(value))
+        return axios.get<CurrencyComparisonResponse>(`${Endpoints.COMAPRE_CURRENCIES}/${value}/${fromCurrency}/${toCurrency}/`);
 
       const onEmptyInputData = {
         data: {

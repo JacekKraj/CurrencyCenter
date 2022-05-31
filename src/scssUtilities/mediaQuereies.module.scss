@@ -51,3 +51,9 @@
     @content;
   }
 }
+
+@mixin custom($screenSize) {
+  @media (min-width: $screenSize) {
+    @content;
+  }
+}

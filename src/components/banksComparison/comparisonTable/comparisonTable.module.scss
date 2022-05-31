@@ -1,0 +1,9 @@
+@import './../../../scssUtilities/index.module.scss';
+
+.comparisonTable {
+  padding: 2em 0 1em;
+
+  @include tabletHorizontal {
+    padding: 3em 0 1em;
+  }
+}

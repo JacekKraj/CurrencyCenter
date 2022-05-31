@@ -1,0 +1,36 @@
+@import './../tableRow/tableRow.module.scss';
+
+.tableHeader {
+  @extend .tableRow;
+}
+
+.tableHeader > button {
+  @extend .tableItem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-weight: bold;
+  text-transform: capitalize;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.tableHeader > button:hover {
+  color: $green-main;
+}
+
+.tableHeader > button:hover::after {
+  content: '';
+  margin-left: 0.5em;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 4px 8px 4px;
+  border-color: transparent transparent $green-main transparent;
+}
+
+.tableHeader > button:first-child {
+  @extend .bankName;
+}
