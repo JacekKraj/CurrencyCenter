@@ -114,7 +114,7 @@ describe('<BanksComparison />', () => {
           const bankNameFirst = findByTestAttr(wrapper, 'bank-name').first();
           const bankNameLast = findByTestAttr(wrapper, 'bank-name').last();
           expect(bankNameFirst.text()).toEqual(banks.alior);
-          expect(bankNameLast.text()).toEqual(banks.bgk);
+          expect(bankNameLast.text()).toEqual(banks.bgz);
           done();
         });
       });
