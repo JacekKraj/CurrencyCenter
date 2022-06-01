@@ -7,6 +7,7 @@ import ComparisonHeader from './comparisonHeader/ComparisonHeader';
 import { Currencies } from './../../utilities/enums/currencies';
 import ComparisonTable from './comparisonTable/ComparisonTable';
 import { getBuildedDate } from '../../utilities/helperFunctions/getBuildedDate';
+import SectionWrapper from '../utility/wrappers/sectionWrapper/SectionWrapper';
 
 const BanksComparison: React.FC = () => {
   const [currency, setCurrency] = React.useState<Currencies>(Currencies.USD);
@@ -15,11 +16,11 @@ const BanksComparison: React.FC = () => {
   return (
     <React.Fragment>
       <Nav />
-      <div className={classes.banksComparisonContentWrapper}>
+      <SectionWrapper>
         <ComparisonHeader currency={currency} setCurrency={setCurrency} />
         <ComparisonTable currency={currency} setValidFrom={setValidFrom} />
         <p className={classes.ratesValidationInfo} data-test='valid-from-date'>{`Exchange rates valid as of ${getBuildedDate(validFrom)}`}</p>
-      </div>
+      </SectionWrapper>
       <Footer />
     </React.Fragment>
   );

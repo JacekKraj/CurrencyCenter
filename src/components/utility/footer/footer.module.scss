@@ -1,11 +1,10 @@
 @import './../../../scssUtilities/index.module.scss';
 
-.footerWrapper {
+.background {
   background-color: $green-main;
 }
 
 .footer {
-  padding: 2.5em 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,9 +12,6 @@
   @include tabletHorizontal {
     flex-direction: row;
     justify-content: space-between;
-    padding: 2.5em 2em;
-    max-width: 1000px;
-    margin: 0 auto;
   }
 }
 

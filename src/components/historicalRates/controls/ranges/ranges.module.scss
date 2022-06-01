@@ -1,0 +1,11 @@
+@import './../../../../scssUtilities/index.module.scss';
+
+.ranges {
+  padding: 0.5em 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  @include custom(500px) {
+    padding: 1em 0;
+  }
+}

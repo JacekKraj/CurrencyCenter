@@ -1,0 +1,18 @@
+@import './../../../../../scssUtilities/index.module.scss';
+
+.range {
+  padding: 0.75em 1em;
+  font-size: 18px;
+  color: $font-main;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.range:hover {
+  background-color: #eee;
+  color: $green-main;
+}
+
+.active {
+  color: $green-main;
+}

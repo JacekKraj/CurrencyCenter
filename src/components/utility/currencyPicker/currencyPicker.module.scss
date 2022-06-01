@@ -9,6 +9,15 @@
   background-color: #fff;
   cursor: pointer;
   transition: 0.2s;
+  font-size: 16px;
+
+  @include custom(500px) {
+    font-size: 18px;
+  }
+
+  @include tabletHorizontal {
+    font-size: 20px;
+  }
 }
 
 .currencyPicker:hover {

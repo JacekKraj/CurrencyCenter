@@ -5,6 +5,7 @@ import Home from './../components/home/Home';
 import SignIn from './../components/auth/signIn/SignIn';
 import SignUp from './../components/auth/signUp/SignUp';
 import BanksComparison from '../components/banksComparison/BanksComparison';
+import HistoricalRates from '../components/historicalRates/HistoricalRates';
 import { AuthContext } from '../context/providers/AuthContextProvider';
 
 const RoutesContainer: React.FC = () => {
@@ -14,6 +15,7 @@ const RoutesContainer: React.FC = () => {
     <React.Fragment>
       <Route path='/' element={<Home />} />
       <Route path='Banks' element={<BanksComparison />} />
+      <Route path='HistoricalRates' element={<HistoricalRates />} />
       <Route path='*' element={<Navigate to='/' replace />} />
     </React.Fragment>
   );

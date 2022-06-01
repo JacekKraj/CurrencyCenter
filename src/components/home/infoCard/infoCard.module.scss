@@ -1,15 +1,12 @@
 @import './../../../scssUtilities/index.module.scss';
 
-.infoCard {
-  padding: 1.5em 1em;
+.background {
   background-color: $green-main-lightest;
+}
 
-  @include mobileHorizontal {
-    padding: 2em;
-  }
-
+.wrapperAdditional {
   @include tabletHorizontal {
-    padding: 2em 2em 10em;
+    padding-bottom: 10em !important;
   }
 }
 

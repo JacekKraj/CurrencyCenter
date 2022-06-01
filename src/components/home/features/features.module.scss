@@ -1,12 +1,7 @@
 @import './../../../scssUtilities/index.module.scss';
 
-.featuresComponent {
+.background {
   background-color: $green-main-lightest;
-  padding: 2em 0;
-
-  @include tabletHorizontal {
-    padding: 6em 0;
-  }
 }
 
 .featuresContainer {
@@ -15,6 +10,7 @@
   align-items: center;
 
   @include tabletHorizontal {
+    padding: 4em 0;
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;

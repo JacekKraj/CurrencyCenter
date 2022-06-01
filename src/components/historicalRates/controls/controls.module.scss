@@ -1,0 +1,7 @@
+@import './../../../scssUtilities/index.module.scss';
+
+.controls {
+  @include custom(500px) {
+    padding: 1.5em 0;
+  }
+}

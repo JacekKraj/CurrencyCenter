@@ -1,0 +1,21 @@
+@import './../../../../scssUtilities/index.module.scss';
+
+.checkboxRed {
+  color: $red-main !important;
+}
+
+.checkboxBlue {
+  color: $blue-main !important;
+}
+
+.checkboxGray {
+  color: $gray-main !important;
+}
+
+.typesCheckboxes {
+  display: flex;
+  flex-direction: column;
+  @include laptopSm {
+    flex-direction: row;
+  }
+}
