@@ -8,9 +8,9 @@ const Types: React.FC = () => {
   return (
     <FormGroup>
       <div className={classes.typesCheckboxes}>
-        <TypeCheckbox label='Best buy rate' className={classes.checkboxRed} />
-        <TypeCheckbox label='Best sell rate' className={classes.checkboxBlue} />
-        <TypeCheckbox label='Average rate in the world' className={classes.checkboxGray} />
+        <TypeCheckbox label='Best buy rate' className={classes.checkboxRed} type='buy' />
+        <TypeCheckbox label='Best sell rate' className={classes.checkboxBlue} type='sell' />
+        <TypeCheckbox label='Average rate in the world' className={classes.checkboxGray} type='average' />
       </div>
     </FormGroup>
   );

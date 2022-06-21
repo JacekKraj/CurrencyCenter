@@ -9,10 +9,10 @@
 }
 
 .range:hover {
-  background-color: #eee;
+  background-color: $green-main-lightest;
   color: $green-main;
 }
 
-.active {
+.rangeActive {
   color: $green-main;
 }

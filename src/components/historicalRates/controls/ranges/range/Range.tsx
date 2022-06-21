@@ -1,13 +1,28 @@
 import React from 'react';
+import classnames from 'classnames';
 
 import classes from './range.module.scss';
+import { Ranges } from './../../../../../context/reducers/historicalRatesReducer';
+import { HistoricalRatesContext } from './../../../../../context/providers/HistoricalRatesContextProvider';
 
 interface Props {
-  value: string;
+  value: Ranges;
 }
 
 const Range: React.FC<Props> = ({ value }) => {
-  return <div className={classes.range}>{value}</div>;
+  const { setCurrentRange, currentRange } = React.useContext(HistoricalRatesContext);
+
+  const onClickHandler = () => {
+    setCurrentRange(value);
+  };
+
+  const isCurrentRange = currentRange === value;
+
+  return (
+    <div className={classnames(classes.range, isCurrentRange && classes.rangeActive)} onClick={onClickHandler}>
+      {value}
+    </div>
+  );
 };
 
 export default Range;

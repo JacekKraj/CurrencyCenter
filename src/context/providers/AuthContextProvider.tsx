@@ -35,7 +35,7 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
   const navigate = useNavigate();
 
   const setError = (message: string) => {
-    dispatch({ type: ActionTypes.SET_ERROR, message });
+    dispatch({ type: ActionTypes.SET_AUTHENTICATION_ERROR, message });
   };
 
   const registerStart = () => {

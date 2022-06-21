@@ -1,0 +1,9 @@
+@import './../../../../scssUtilities/index.module.scss';
+
+.customTooltip {
+  background-color: rgba(245, 245, 245, 0.9);
+  backdrop-filter: blur(1px);
+  padding: 0.5em;
+  border-radius: 8px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

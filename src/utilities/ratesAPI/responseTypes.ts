@@ -1,4 +1,5 @@
 import { Currencies } from '../enums/currencies';
+import { banks } from './banks';
 
 export interface CurrencyComparisonResponse {
   result: {
@@ -23,7 +24,7 @@ export interface BankComparisonValues {
 }
 
 interface BanksComparison {
-  [key: string]: {
+  [key: keyof typeof banks]: {
     [key in Currencies]: BankComparisonValues;
   };
 }
@@ -33,3 +34,9 @@ interface BanksComparisonValidFrom {
 }
 
 export type BanksComparisonResponse = BanksComparison & BanksComparisonValidFrom;
+
+export type SingleHistoricalRate = [number, number, number, number, number, number, number, number, number];
+
+export interface HistoricalRatesResponse {
+  ik_series: SingleHistoricalRate[];
+}
