@@ -129,6 +129,4 @@ describe('<HistoricalRates />', () => {
       });
     });
   });
-
-  it('displays USD when passing incorrect path in browser', () => {});
 });
