@@ -19,7 +19,7 @@ const Range: React.FC<Props> = ({ value }) => {
   const isCurrentRange = currentRange === value;
 
   return (
-    <div className={classnames(classes.range, isCurrentRange && classes.rangeActive)} onClick={onClickHandler}>
+    <div className={classnames(classes.range, isCurrentRange && classes.rangeActive)} onClick={onClickHandler} data-test='range'>
       {value}
     </div>
   );

@@ -82,7 +82,6 @@ const HistoricalRatesContextProvider: React.FC<Props> = ({ children }) => {
       setHistoricalRates(fetchedRates.data);
     } catch (error) {
       const errorMessage = getCatchErrorMessage(error);
-
       setHistoricalRatesError(errorMessage);
     }
   };

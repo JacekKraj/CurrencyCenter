@@ -19,7 +19,6 @@ const getOneTypeRates = (
 
     return [...accumulator, buildedRate];
   }, []);
-
   return oneTypeRates;
 };
 

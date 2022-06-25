@@ -34,8 +34,14 @@ const Header: React.FC = () => {
 
   return (
     <div className={classes.chartHeader}>
-      <PageHeader text={`USD historical rates`} />
-      <CurrencyPicker className={classes.pickerAdditional} value={currency} changeValue={onPickerValueChange} blockedCurrencies={[Currencies.PLN]} />
+      <PageHeader text={`${currency} historical rates`} data-test='page-header' />
+      <CurrencyPicker
+        className={classes.pickerAdditional}
+        value={currency}
+        changeValue={onPickerValueChange}
+        data-test='currency-picker'
+        blockedCurrencies={[Currencies.PLN]}
+      />
     </div>
   );
 };

@@ -38,7 +38,13 @@ const TypeCheckbox: React.FC<Props> = ({ label, className, type }) => {
     setIsChecked(true);
   };
 
-  return <FormControlLabel control={<Checkbox checked={isChecked} onChange={onChangeHandler} className={className} />} label={label} />;
+  return (
+    <FormControlLabel
+      control={<Checkbox checked={isChecked} onChange={onChangeHandler} className={className} />}
+      label={label}
+      data-test={`${type}-type-checkbox`}
+    />
+  );
 };
 
 export default TypeCheckbox;

@@ -17,25 +17,47 @@ const Chart: React.FC = () => {
   }, [currentRange, currency]);
 
   const getChartData = () => {
-    const { sell, buy, average } = isActiveStatus;
     const chartData = [...sellRates].map((_, index) => {
       return {
-        sellValue: sell ? sellRates[index].value : null,
-        buyValue: buy ? buyRates[index].value : null,
-        averageValue: average ? averageRates[index].value : null,
+        sellValue: sellRates[index].value,
+        buyValue: buyRates[index].value,
+        averageValue: averageRates[index].value,
         timestamp: sellRates[index].timestamp,
       };
     });
-
     return chartData || [];
   };
 
   const chart = (
     <ResponsiveContainer width='100%' height='100%'>
       <LineChart data={getChartData()}>
-        <Line type='linear' dataKey='sellValue' stroke={colors.chartBlue} dot={false} strokeWidth={2} />
-        <Line type='linear' dataKey='buyValue' stroke={colors.chartRed} dot={false} strokeWidth={2} />
-        <Line type='linear' dataKey='averageValue' stroke={colors.chartGray} dot={false} strokeWidth={2} />
+        <Line
+          type='linear'
+          dataKey='sellValue'
+          stroke={colors.chartBlue}
+          dot={false}
+          hide={!isActiveStatus.sell}
+          strokeWidth={2}
+          data-test='sell-chart-line'
+        />
+        <Line
+          type='linear'
+          dataKey='buyValue'
+          stroke={colors.chartRed}
+          dot={false}
+          strokeWidth={2}
+          hide={!isActiveStatus.buy}
+          data-test='buy-chart-line'
+        />
+        <Line
+          type='linear'
+          dataKey='averageValue'
+          stroke={colors.chartGray}
+          hide={!isActiveStatus.average}
+          dot={false}
+          strokeWidth={2}
+          data-test='average-chart-line'
+        />
         <Tooltip content={<CustomTooltip />} />
         <XAxis dataKey='timestamp' tickMargin={5} minTickGap={30} />
         <YAxis padding={{ top: 10, bottom: 10 }} domain={['dataMin', 'dataMax']} />

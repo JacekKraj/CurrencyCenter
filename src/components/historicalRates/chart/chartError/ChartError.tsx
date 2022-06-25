@@ -5,7 +5,11 @@ import { HistoricalRatesContext } from '../../../../context/providers/Historical
 
 const ChartError: React.FC = () => {
   const { errorMessage } = React.useContext(HistoricalRatesContext);
-  return <div className={classes.error}>{errorMessage}</div>;
+  return (
+    <div className={classes.error} data-test='chart-error'>
+      {errorMessage}
+    </div>
+  );
 };
 
 export default ChartError;
