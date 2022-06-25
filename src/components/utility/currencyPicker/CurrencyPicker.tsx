@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import classes from './currencyPicker.module.scss';
-import { Currencies } from './../../../utilities/enums/currencies';
+import { Currencies } from '../../../utilities/globalEnums/currencies';
 
 interface Props {
   value: Currencies;

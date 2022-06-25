@@ -4,7 +4,7 @@ import { createMemoryHistory } from 'history';
 
 import Header from './Header';
 import { findByTestAttr } from '../../../utilities/tests/testsUtilityFunctions';
-import { Currencies } from '../../../utilities/enums/currencies';
+import { Currencies } from '../../../utilities/globalEnums/currencies';
 import HistoricalRatesContextProvider from '../../../context/providers/HistoricalRatesContextProvider';
 
 const setup = () => {

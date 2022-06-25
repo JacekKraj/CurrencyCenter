@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 
 import classes from './header.module.scss';
 import CurrencyPicker from '../../utility/currencyPicker/CurrencyPicker';
-import { Currencies } from '../../../utilities/enums/currencies';
+import { Currencies } from '../../../utilities/globalEnums/currencies';
 import PageHeader from '../../utility/pageHeader/PageHeader';
 import { HistoricalRatesContext } from '../../../context/providers/HistoricalRatesContextProvider';
 import { useQuery } from '../../../utilities/hooks/useQuery';

@@ -9,7 +9,7 @@ import axios from './../../../../utilities/ratesAPI/axios';
 import classes from './currencyConverter.module.scss';
 import { breakpoints } from './../../../../utilities/breakpoints/breakpoints';
 import CurrencyInput, { CurrencyInputProps, CurrencyInputValue } from './currencyInput/CurrencyInput';
-import { Currencies } from './../../../../utilities/enums/currencies';
+import { Currencies } from '../../../../utilities/globalEnums/currencies';
 
 const { tabletHorizontal } = breakpoints;
 

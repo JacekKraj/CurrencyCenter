@@ -1,5 +1,5 @@
 import { ActionTypes } from '../actionTypes';
-import { Currencies } from './../../utilities/enums/currencies';
+import { Currencies } from '../../utilities/globalEnums/currencies';
 import { Actions } from './../actions/historicalRates';
 import { buildHistoricalRates } from './reducersUtilFunctions/historicalRates';
 

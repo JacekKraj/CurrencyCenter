@@ -2,7 +2,7 @@ import React from 'react';
 
 import { HistoricalRatesInitialState, initialState, historicalRatesReducer, ChartsTypes, Ranges } from './../reducers/historicalRatesReducer';
 import { ActionTypes } from './../actionTypes';
-import { Currencies } from './../../utilities/enums/currencies';
+import { Currencies } from '../../utilities/globalEnums/currencies';
 import axios from './../../utilities/ratesAPI/axios';
 import { Endpoints, HistoricalRatesEnpoints } from './../../utilities/ratesAPI/endpoints';
 import { HistoricalRatesResponse } from './../../utilities/ratesAPI/responseTypes';

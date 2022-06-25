@@ -1,4 +1,4 @@
-import { Currencies } from '../../utilities/enums/currencies';
+import { Currencies } from '../../utilities/globalEnums/currencies';
 import { ActionTypes } from '../actionTypes';
 import { ChartsTypes, Ranges } from './../reducers/historicalRatesReducer';
 import { HistoricalRatesResponse } from './../../utilities/ratesAPI/responseTypes';

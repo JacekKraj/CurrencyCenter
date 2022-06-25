@@ -1,7 +1,7 @@
 import React, { SetStateAction, Dispatch } from 'react';
 
 import classes from './comparisonTable.module.scss';
-import { Currencies } from './../../../utilities/enums/currencies';
+import { Currencies } from '../../../utilities/globalEnums/currencies';
 import { banks } from './../../../utilities/ratesAPI/banks';
 import { sortObjectsByKey } from '../../../utilities/helperFunctions/sortObjectsByKey';
 import TableRow from './tableRow/TableRow';

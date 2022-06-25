@@ -4,7 +4,7 @@ import classes from './banksComparison.module.scss';
 import Nav from '../utility/nav/Nav';
 import Footer from '../utility/footer/Footer';
 import ComparisonHeader from './comparisonHeader/ComparisonHeader';
-import { Currencies } from './../../utilities/enums/currencies';
+import { Currencies } from '../../utilities/globalEnums/currencies';
 import ComparisonTable from './comparisonTable/ComparisonTable';
 import { getBuildedDate } from '../../utilities/helperFunctions/getBuildedDate';
 import SectionWrapper from '../utility/wrappers/sectionWrapper/SectionWrapper';

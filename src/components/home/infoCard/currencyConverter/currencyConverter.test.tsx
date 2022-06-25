@@ -2,7 +2,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import moxios from 'moxios';
 import { waitFor } from '@testing-library/react';
 
-import { Currencies } from '../../../../utilities/enums/currencies';
+import { Currencies } from '../../../../utilities/globalEnums/currencies';
 import axiosInstance from './../../../../utilities/ratesAPI/axios';
 import CurrencyConverter from './CurrencyConverter';
 import { findByTestAttr } from '../../../../utilities/tests/testsUtilityFunctions';
