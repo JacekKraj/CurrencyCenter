@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 
 import classes from './comparisonHeader.module.scss';
 import CurrencyPicker from '../../utility/currencyPicker/CurrencyPicker';
-import { Currencies } from './../../../utilities/enums/currencies';
+import { Currencies } from '../../../utilities/globalEnums/currencies';
 import PageHeader from './../../utility/pageHeader/PageHeader';
 
 interface Props {

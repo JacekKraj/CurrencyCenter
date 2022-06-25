@@ -2,7 +2,7 @@ import React from 'react';
 import ValueInput from 'react-currency-input-field';
 
 import classes from './currencyInput.module.scss';
-import { Currencies } from './../../../../../utilities/enums/currencies';
+import { Currencies } from '../../../../../utilities/globalEnums/currencies';
 
 export type CurrencyInputValue = string | undefined;
 

@@ -9,7 +9,7 @@ import axiosInstance from './../../utilities/ratesAPI/axios';
 import HistoricalRates from './HistoricalRates';
 import { findByTestAttr } from '../../utilities/tests/testsUtilityFunctions';
 import HistoricalRatesContextProvider from '../../context/providers/HistoricalRatesContextProvider';
-import { Currencies } from './../../utilities/enums/currencies';
+import { Currencies } from '../../utilities/globalEnums/currencies';
 
 jest.mock('recharts', () => {
   const OriginalRecharts = jest.requireActual('recharts');

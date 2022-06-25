@@ -2,7 +2,8 @@ import React from 'react';
 
 import classes from './rates.module.scss';
 import Rate, { Props as BuildedRates } from './rate/Rate';
-import { Currencies, CurrenciesParis } from '../../../utilities/enums/currencies';
+import { Currencies } from '../../../utilities/globalEnums/currencies';
+import { CurrenciesPairs } from '../../../utilities/globalEnums/currenciesPairs';
 import axios from './../../../utilities/ratesAPI/axios';
 import { Endpoints } from '../../../utilities/ratesAPI/endpoints';
 import { FetchedRatesResponse } from '../../../utilities/ratesAPI/responseTypes';
@@ -17,7 +18,7 @@ const Rates: React.FC = () => {
 
     const getRelevantRates = (fetchedRates: FetchedRatesResponse) => {
       return fetchedRates.filter((rate) => {
-        return Object.keys(CurrenciesParis).includes(rate.pair);
+        return Object.keys(CurrenciesPairs).includes(rate.pair);
       });
     };
 

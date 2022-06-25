@@ -6,7 +6,7 @@ import { banks } from '../../utilities/ratesAPI/banks';
 import axiosInstance from './../../utilities/ratesAPI/axios';
 import BanksComparison from './BanksComparison';
 import { findByTestAttr } from '../../utilities/tests/testsUtilityFunctions';
-import { Currencies } from '../../utilities/enums/currencies';
+import { Currencies } from '../../utilities/globalEnums/currencies';
 import { getBuildedDate } from './../../utilities/helperFunctions/getBuildedDate';
 
 jest.mock('./../utility/nav/Nav.tsx', () => {

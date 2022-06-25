@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import classes from './rate.module.scss';
-import { Currencies } from '../../../../utilities/enums/currencies';
+import { Currencies } from '../../../../utilities/globalEnums/currencies';
 
 export interface Props {
   currency: Currencies;

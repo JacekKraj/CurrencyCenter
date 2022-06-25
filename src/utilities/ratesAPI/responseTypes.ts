@@ -1,4 +1,4 @@
-import { Currencies } from '../enums/currencies';
+import { Currencies } from '../globalEnums/currencies';
 import { banks } from './banks';
 
 export interface CurrencyComparisonResponse {
