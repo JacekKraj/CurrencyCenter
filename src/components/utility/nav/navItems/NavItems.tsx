@@ -30,7 +30,7 @@ const NavItems: React.FC = () => {
   return (
     <ul className={classes.navItems}>
       {isAuthenticated && <NavItem path='Diary' label='Diary' icon={<MenuBookOutlinedIcon className={iconsStyle.navIcon} />} />}
-      <NavItem path='Rates' label='Exchange rates' icon={<ShowChartOutlinedIcon className={iconsStyle.navIcon} />} />
+      <NavItem path='HistoricalRates?currency=USD' label='Historical Rates' icon={<ShowChartOutlinedIcon className={iconsStyle.navIcon} />} />
       <NavItem path='Banks' label='Banks Comparison' icon={<AccountBalanceIcon className={iconsStyle.navIcon} />} />
     </ul>
   );

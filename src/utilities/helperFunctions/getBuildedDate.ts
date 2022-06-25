@@ -1,5 +1,7 @@
-export const getBuildedDate = (date: Date) => {
-  const month = date.getMonth() + 1;
+import { getMonthAndDayWithZeroPrefix } from './getMonthAndDayWithZeroPrefix';
 
-  return `${date.getDate()}-${month > 10 ? month : `0${month}`}-${date.getFullYear()}`;
+export const getBuildedDate = (date: Date) => {
+  const { day, month } = getMonthAndDayWithZeroPrefix(date);
+
+  return `${day}-${month}-${date.getFullYear()}`;
 };

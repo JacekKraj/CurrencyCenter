@@ -1,0 +1,17 @@
+@import './../../../scssUtilities/index.module.scss';
+
+.chartHeader {
+  @include custom(500px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.pickerAdditional {
+  margin: 2em 0;
+
+  @include custom(500px) {
+    margin: 0;
+  }
+}

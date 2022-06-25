@@ -3,6 +3,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import classes from './comparisonHeader.module.scss';
 import CurrencyPicker from '../../utility/currencyPicker/CurrencyPicker';
 import { Currencies } from './../../../utilities/enums/currencies';
+import PageHeader from './../../utility/pageHeader/PageHeader';
 
 interface Props {
   currency: Currencies;
@@ -13,14 +14,12 @@ const ComparisonHeader: React.FC<Props> = ({ currency, setCurrency }) => {
   return (
     <div className={classes.comparisonHeader}>
       <div className={classes.header}>
-        <h1 className={classes.headerTitle} data-test='comparison-header-currency-info'>
-          {currency} exchange rates in banks
-        </h1>
+        <PageHeader dataTest='comparison-header-currency-info' text={`${currency} exchange rates in banks`} />
         <CurrencyPicker
           value={currency}
           changeValue={setCurrency}
           blockedCurrencies={[Currencies.PLN]}
-          className={classes.picker}
+          className={classes.pickerAdditional}
           dataTest='comparison-currency-picker'
         />
       </div>

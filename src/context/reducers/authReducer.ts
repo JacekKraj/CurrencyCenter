@@ -53,7 +53,7 @@ export const authReducer = (state: AuthInitialState = initialState, action: Acti
         isLoading: false,
         errorMessage: action.errorMessage,
       };
-    case ActionTypes.SET_ERROR:
+    case ActionTypes.SET_AUTHENTICATION_ERROR:
       return {
         ...state,
         errorMessage: action.message,

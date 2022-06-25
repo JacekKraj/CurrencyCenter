@@ -1,0 +1,9 @@
+@import './../../../scssUtilities/index.module.scss';
+
+.pageHeader {
+  color: $font-main;
+
+  @include tabletHorizontal {
+    font-size: 36px;
+  }
+}

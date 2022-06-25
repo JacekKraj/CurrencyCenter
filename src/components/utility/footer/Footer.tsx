@@ -5,8 +5,8 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import { makeStyles } from '@material-ui/core/styles';
-import classnames from 'classnames';
 
+import SectionWrapper from '../wrappers/sectionWrapper/SectionWrapper';
 import { breakpoints } from '../../../utilities/breakpoints/breakpoints';
 import classes from './footer.module.scss';
 import FooterIcon from './footerIcon/FooterIcon';
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
   const styles = useStyles();
 
   return (
-    <div className={classes.footerWrapper}>
+    <SectionWrapper backgorundClassName={classes.background}>
       <div className={classes.footer}>
         <p className={classes.texts}>
           &copy; CurrencyCenter
@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
           <FooterIcon Icon={<YouTubeIcon className={styles.icon} />} path='https://www.youtube.com' />
         </div>
       </div>
-    </div>
+    </SectionWrapper>
   );
 };
 

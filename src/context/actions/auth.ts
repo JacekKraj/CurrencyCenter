@@ -27,8 +27,8 @@ interface RegisterFail {
   errorMessage: string;
 }
 
-interface SetError {
-  type: ActionTypes.SET_ERROR;
+interface SetAuthenticationError {
+  type: ActionTypes.SET_AUTHENTICATION_ERROR;
   message: string;
 }
 
@@ -36,4 +36,12 @@ interface Logout {
   type: ActionTypes.LOGOUT;
 }
 
-export type Actions = AuthenticateStart | AuthenticateEnd | AuthenticateFail | RegisterStart | RegisterEnd | RegisterFail | SetError | Logout;
+export type Actions =
+  | AuthenticateStart
+  | AuthenticateEnd
+  | AuthenticateFail
+  | RegisterStart
+  | RegisterEnd
+  | RegisterFail
+  | SetAuthenticationError
+  | Logout;

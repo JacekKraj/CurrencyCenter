@@ -14,7 +14,7 @@ export interface Props {
 
 const Rate: React.FC<Props> = ({ currency, values }) => {
   return (
-    <NavLink to='/' className={classes.rateComponent}>
+    <NavLink to={`HistoricalRates?currency=${currency}`} className={classes.rateComponent}>
       <p className={classes.currency}>{currency}</p>
       <div className={classes.rateValues}>
         <div>
