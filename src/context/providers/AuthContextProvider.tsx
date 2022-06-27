@@ -1,6 +1,6 @@
 import React from 'react';
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { AuthInitialState, initialState, authReducer } from './../reducers/authReducer';
 import { ActionTypes } from './../actionTypes';
@@ -18,6 +18,10 @@ interface AuthContextType extends AuthInitialState {
   logout: () => void;
 }
 
+interface Location {
+  prevLocation: string;
+}
+
 const initialContext: AuthContextType = {
   ...initialState,
   register: () => ({}),
@@ -33,6 +37,8 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = React.useReducer(authReducer, initialState);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const locationState = location.state as Location;
 
   const setError = (message: string) => {
     dispatch({ type: ActionTypes.SET_AUTHENTICATION_ERROR, message });
@@ -80,12 +86,19 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
     dispatch({ type: ActionTypes.AUTHENTICATE_FAIL, errorMessage });
   };
 
+  const navigateAfterAuthenticate = () => {
+    const pathToNavigate = locationState?.prevLocation || '/';
+    navigate(pathToNavigate);
+  };
+
   const authenticate = async (email: string, password: string) => {
     authenticateStart();
     try {
       const auth = getAuth();
 
       await signInWithEmailAndPassword(auth, email, password);
+
+      navigateAfterAuthenticate();
     } catch (error) {
       const message = getCatchErrorMessage(error);
 

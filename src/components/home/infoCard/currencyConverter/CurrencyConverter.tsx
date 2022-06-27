@@ -49,6 +49,7 @@ const CurrencyConverter: React.FC = () => {
   const [inputsSwapped, setInputsSwapped] = React.useState<boolean>(false);
   const [rate, setRate] = React.useState<string>('0.0');
   const [status, setStatus] = React.useState<Status>({ wasChanged: true, last: HAVE });
+  const [isToCancel, setIsToCancel] = React.useState<boolean>(false);
 
   const iconsStyle = useStyles();
 
@@ -137,6 +138,8 @@ const CurrencyConverter: React.FC = () => {
     const updateComparison = async () => {
       const { data } = await getNewComparisonData();
 
+      if (isToCancel) return;
+
       setRate(data.result.exchangeRate);
 
       const setter = status.last === HAVE ? setReceiveInputValues : setHaveInputValues;
@@ -147,6 +150,12 @@ const CurrencyConverter: React.FC = () => {
 
     setStatus((currState) => ({ ...currState, wasChanged: false }));
   }, [status.wasChanged]);
+
+  React.useEffect(() => {
+    return () => {
+      setIsToCancel(false);
+    };
+  }, []);
 
   return (
     <div className={classes.currencyConverter}>
