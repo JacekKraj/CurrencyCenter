@@ -5,7 +5,6 @@ export const banks: { [key: string]: string } = {
   bgz: 'BGŻ',
   bnpparibas: 'BNP Paribas',
   bos: 'BOŚ Bank',
-  bph: 'BPH',
   bps: 'BPS',
   bzwbk: 'BZWBK',
   citibank: 'Citi Handlowy',

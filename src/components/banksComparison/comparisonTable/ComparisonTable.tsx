@@ -60,6 +60,7 @@ const ComparisonTable: React.FC<Props> = ({ currency, setValidFrom }) => {
       const sortedComparisons = sortObjectsByKey(buildedComparisons, 'bank');
       setValidFrom(new Date(data.valid_from));
       setComparisons(sortedComparisons);
+      setSortingCondition(SortingConditions.BANK);
     };
 
     getComparisons();
@@ -72,7 +73,7 @@ const ComparisonTable: React.FC<Props> = ({ currency, setValidFrom }) => {
 
   return (
     <div className={classes.comparisonTable}>
-      <TableHeader setSortingCondition={setSortingCondition} />
+      <TableHeader sortingCondition={{ set: setSortingCondition, current: sortingCondition }} />
       {comparisons.map((comparison) => {
         return <TableRow key={comparison.bank} {...comparison} />;
       })}

@@ -17,11 +17,13 @@
   align-items: center;
 }
 
-.tableHeader > button:hover {
+.tableHeader > button:hover,
+.active {
   color: $green-main;
 }
 
-.tableHeader > button:hover::after {
+.tableHeader > button:hover::after,
+.active::after {
   content: '';
   margin-left: 0.5em;
   width: 0;
