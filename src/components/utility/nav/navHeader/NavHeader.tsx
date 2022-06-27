@@ -36,7 +36,7 @@ const NavHeader: React.FC<Props> = ({ children, showSideBar }) => {
 
   const unauthenticatedButtons = (
     <React.Fragment>
-      <NavLink to='/SignIn'>
+      <NavLink to='/SignIn' state={{ prevLocation: location.pathname }}>
         <button className={classes.signInButton}>Sign In</button>
       </NavLink>
       <NavLink to='/SignUp'>

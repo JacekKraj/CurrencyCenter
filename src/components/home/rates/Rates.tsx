@@ -12,6 +12,8 @@ const Rates: React.FC = () => {
   const [rates, setRates] = React.useState<BuildedRates[]>([]);
 
   React.useEffect(() => {
+    let isToCancel = false;
+
     const fetchRatesFromServer = () => {
       return axios.get<FetchedRatesResponse>(Endpoints.RATES);
     };
@@ -39,10 +41,14 @@ const Rates: React.FC = () => {
       const relevantRates = getRelevantRates(data);
       const buildedRates = buildRates(relevantRates);
 
+      if (isToCancel) return;
       setRates(buildedRates);
     };
-
     getRates();
+
+    return () => {
+      isToCancel = true;
+    };
   }, []);
 
   return (

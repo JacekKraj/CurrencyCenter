@@ -3,7 +3,7 @@ import React from 'react';
 import classes from './infoCard.module.scss';
 import Info from './info/Info';
 import CurrencyConverter from './currencyConverter/CurrencyConverter';
-import SectionWrapper from '../../utility/wrappers/sectionWrapper/SectionWrapper';
+import SectionWrapper from './../../utility/wrappers/sectionWrapper/SectionWrapper';
 
 const InfoCard: React.FC = () => {
   return (
